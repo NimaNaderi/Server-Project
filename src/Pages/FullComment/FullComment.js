@@ -13,13 +13,11 @@ const FullComment = () => {
   const [data, setData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const commentPostId = useLocation().state;
-  // const [requestStatus, setRequestStatus] = useState(null);
   const { requestStatus, sendRequest, setRequestStatus } = useHttp(
     "delete",
-    commentPostId,
+    { commentPostId: commentPostId },
     setData
   );
-  const navigate = useNavigate();
   const getComments = async () => {
     try {
       const selectedComment = await (await getOneComment(commentPostId)).data;
@@ -39,31 +37,6 @@ const FullComment = () => {
     getComments();
   }, [commentPostId]);
 
-  const deleteHandler = () => {
-    sendRequest();
-    // setRequestStatus("Pending");
-    // const itemThatWillRemove = JSON.parse(
-    //   localStorage.getItem("selectedComment")
-    // );
-    // // http
-    // //   .delete(`/comments/${selectedId}`)
-    // //   .then((res) => http.get("/comments"))
-    // //   .then((res) => setComments(res.data.filter((c) => c.id !== selectedId))) //! In Real Project Forexample Before Delete We Had 10 Items After Delete
-    // //   //! We Will Have 9 Items And Return Is That 9 Item And We Must setState() That 9 Items And Show Updated
-    // //   //! Items To User !
-    // //   .catch((err) => console.log(err));
-    // try {
-    //   await deleteComment(commentPostId);
-    //   navigate("/", {
-    //     state: { status: "delete", data: itemThatWillRemove },
-    //   });
-    //   localStorage.removeItem("selectedComment");
-    // } catch (error) {
-    //   setRequestStatus("Error");
-    //   setData(null);
-    // }
-  };
-
   const style = {
     color: "#444",
     backgroundColor: "#efefef",
@@ -77,7 +50,7 @@ const FullComment = () => {
           <p>Name: {data.name}</p>
           <p>Email: {data.email}</p>
           <p>Description: {data.content}</p>
-          <button className="btn-delete" onClick={deleteHandler}>
+          <button className="btn-delete" onClick={sendRequest}>
             Delete
           </button>
           {renderStatus(

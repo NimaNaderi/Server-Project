@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import addNewComment from "../services/addNewComment";
 import deleteComment from "../services/deleteComment";
 
-export default function useHttp(actionType, commentPostId, setData) {
+export default function useHttp(
+  actionType,
+  { commentPostId, comment },
+  setData
+) {
   const [requestStatus, setRequestStatus] = useState(null);
   const navigate = useNavigate();
 
   const sendRequest = async () => {
-    if (actionType == "delete") {
+    if (actionType === "delete") {
       setRequestStatus("Pending");
       const itemThatWillRemove = JSON.parse(
         localStorage.getItem("selectedComment")
       );
-      // http
-      //   .delete(`/comments/${selectedId}`)
-      //   .then((res) => http.get("/comments"))
-      //   .then((res) => setComments(res.data.filter((c) => c.id !== selectedId))) //! In Real Project Forexample Before Delete We Had 10 Items After Delete
-      //   //! We Will Have 9 Items And Return Is That 9 Item And We Must setState() That 9 Items And Show Updated
-      //   //! Items To User !
-      //   .catch((err) => console.log(err));
 
       try {
         await deleteComment(commentPostId);
@@ -31,7 +29,20 @@ export default function useHttp(actionType, commentPostId, setData) {
         setData(null);
       }
     } else {
-      console.log("not this");
+      //! Create !
+      //* name, email, content => Data That Will Pass To Request !
+
+      try {
+        setRequestStatus("Pending");
+        await addNewComment({
+          ...comment,
+          postId: Math.floor(Math.random() * 1000),
+        });
+
+        navigate("/", { state: "new" });
+      } catch (error) {
+        setRequestStatus("Error");
+      }
     }
   };
   return { sendRequest, requestStatus, setRequestStatus };
