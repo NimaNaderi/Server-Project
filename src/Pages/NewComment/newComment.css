@@ -1,0 +1,37 @@
+.newComment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #e0e7ff;
+  /* width: 600px; */
+  padding: 15px 20px;
+  height: 300px;
+  color: #4338ca;
+  border-radius: 5px;
+}
+* {
+  margin-bottom: 15px;
+}
+label {
+  margin-right: 10px;
+}
+.btn-post {
+  outline: none;
+  background-color: #38bdf8;
+  border: 1px solid #38bdf8;
+  border-radius: 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+input {
+  transition: all 0.2s ease-in;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 8px;
+  text-align: center;
+}
+input:focus {
+  border: 2px solid green;
+}

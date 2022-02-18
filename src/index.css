@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Fira Code;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  /* background-color: #efefef; */
+  padding: 10px;
+}
+li {
+  text-decoration: none;
+  margin: 10px;
+}
+footer {
+  /* background: rgb(226, 221, 221); */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.aside {
+  /* background-color: #00a8ff; */
+}
+.activeTab {
+  color: #e84118;
+}

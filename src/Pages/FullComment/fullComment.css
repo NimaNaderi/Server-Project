@@ -1,0 +1,24 @@
+.fullComment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #e0e7ff;
+  /* width: 600px; */
+  height: 200px;
+  color: #4338ca;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+p {
+  margin: 10px;
+}
+.btn-delete {
+  background-color: #fff;
+  color: red;
+  outline: none;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px 8px;
+}

@@ -1,0 +1,11 @@
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #e0e7ff;
+  width: 200px;
+  height: 200px;
+  color: #4338ca;
+  border-radius: 10px;
+}
